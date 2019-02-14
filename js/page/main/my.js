@@ -1,25 +1,12 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 
-import NavigationUtil from '../navigator/navigation_util';
-
 type Props = {};
-export default class WelcomePage extends Component<Props> {
-  componentDidMount() {
-    this.timer=setTimeout(()=>{
-       NavigationUtil.resetToHomePage({
-         navigation:this.props.navigation
-       })
-    },500)
-  }
-  componentWillUnmount() {
-    this.timer&&clearTimeout(this.timer)
-  }
+export default class MyPage extends Component<Props> {
   render() {
-    const {navigation}=this.props;
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome Page!</Text>
+        <Text style={styles.welcome}>Welcome HomePage!</Text>
       </View>
     );
   }
