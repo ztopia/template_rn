@@ -56,6 +56,21 @@ class PopularTab extends Component<Props>{
              navigation:this.props.navigation
            },'DetailPage')
         }}>跳转到详情页</Text>
+        <Text onPress={()=>{
+           NavigationUtil.goPage({
+             navigation:this.props.navigation
+           },'FetchDemoPage')
+        }}>FetchDemoPage</Text>
+        <Text onPress={()=>{
+           NavigationUtil.goPage({
+             navigation:this.props.navigation
+           },'AsyncStorageDemo')
+        }}>AsyncStorageDemo</Text>
+        <Text onPress={()=>{
+           NavigationUtil.goPage({
+             navigation:this.props.navigation
+           },'DataStorageDemo')
+        }}>DataStorageDemo</Text>
       </View>
     );
   }

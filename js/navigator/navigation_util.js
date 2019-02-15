@@ -11,7 +11,7 @@
      static goBack(navigation){
          navigation.goBack();
      }
-     //跳转到指定页面
+     //跳转到指定页面（里层路由跳转，需要再外层保存navigation,home_page.js）
       static goPage(params,page){
          const navigation=NavigationUtil.navigation;
          if(!navigation){

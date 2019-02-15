@@ -8,6 +8,9 @@ import {createStackNavigator,
 import WelcomePage from './../page/welcome';
 import HomePage from './../page/home_page';
 import DetailPage from './../page/detail_page';
+import FetchDemoPage from './../page/fetch_demo';
+import AsyncStorageDemo from './../page/asyncstorage_demo';
+import DataStorageDemo from './../page/data_storage_demo';
 //redux-------------------------------------------
 import {connect} from 'react-redux';
 import {createReactNavigationReduxMiddleware,createReduxContainer} from 'react-navigation-redux-helpers';
@@ -33,6 +36,24 @@ const MainNavigator=createStackNavigator({
         screen: DetailPage,
         navigationOptions:{
           title:"DetailPage"
+        }
+    },
+    FetchDemoPage:{
+        screen: FetchDemoPage,
+        navigationOptions:{
+          title:"FetchDemoPage"
+        }
+    },
+    AsyncStorageDemo:{
+        screen: AsyncStorageDemo,
+        navigationOptions:{
+          title:"AsyncStorageDemo"
+        }
+    },
+    DataStorageDemo:{
+        screen: DataStorageDemo,
+        navigationOptions:{
+          title:"DataStorageDemo"
         }
     }
 });

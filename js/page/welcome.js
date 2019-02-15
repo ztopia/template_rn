@@ -10,7 +10,7 @@ export default class WelcomePage extends Component<Props> {
        NavigationUtil.resetToHomePage({
          navigation:this.props.navigation
        })
-    },500)
+    },1000)
   }
   componentWillUnmount() {
     this.timer&&clearTimeout(this.timer)
@@ -20,6 +20,12 @@ export default class WelcomePage extends Component<Props> {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>Welcome Page!</Text>
+        <Text onPress={()=>{
+          //  NavigationUtil.goPage({
+          //    navigation:this.props.navigation
+          //  },'DetailPage')
+          navigation.navigate('FetchDemoPage')
+        }}>跳转到FetchDemoPage</Text>
       </View>
     );
   }
