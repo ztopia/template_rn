@@ -18,9 +18,9 @@ const navReducer = (state = navState, action) => {
  * 3.合并reducer
  * @type {Reducer<any> | Reducer<any, AnyAction>}
  */
-const index = combineReducers({
+const index = combineReducers({//聚合reducer,扩展
     nav: navReducer,
     theme: theme,
 });
 
-export default index;
+export default index; //=> /store/index/js
