@@ -1,21 +1,43 @@
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, Button} from 'react-native';
-import {connect} from 'react-redux';
-import actions from '../../action/index';
+import React from 'react';
+import {
+  NativeModules,
+  LayoutAnimation,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  View,
+} from 'react-native';
 
-type Props = {};
-class TrendingPage extends Component<Props> {
+const { UIManager } = NativeModules;
+
+UIManager.setLayoutAnimationEnabledExperimental &&
+  UIManager.setLayoutAnimationEnabledExperimental(true);
+
+export default class App extends React.Component {
+  state = {
+    w: 100,
+    h: 100,
+  };
+
+  _onPress = () => {
+    // Animate the update
+    LayoutAnimation.spring();
+    if(this.state.w>150){
+      this.setState({w: 100, h: 100})
+    }else{
+      this.setState({w: this.state.w + 15, h: this.state.h + 15})
+    }
+  }
+
   render() {
-    const {navigation}=this.props;
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome HomePage!</Text>
-        <Button
-          title={'改变主题色'}
-          onPress={()=>{
-            this.props.onThemeChange('blue');
-          }}
-        />
+        <View style={[styles.box, {width: this.state.w, height: this.state.h}]} />
+        <TouchableOpacity onPress={this._onPress}>
+          <View style={styles.button}>
+            <Text style={styles.buttonText}>Press me!</Text>
+          </View>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -24,21 +46,22 @@ class TrendingPage extends Component<Props> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    justifyContent: 'center',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  box: {
+    width: 200,
+    height: 200,
+    backgroundColor: 'red',
   },
-
+  button: {
+    backgroundColor: 'black',
+    paddingHorizontal: 20,
+    paddingVertical: 15,
+    marginTop: 15,
+  },
+  buttonText: {
+    color: '#fff',
+    fontWeight: 'bold',
+  },
 });
-
-//订阅逻辑
-const mapStateToProps=state=>({});
-const mapDispatchToProps=dispatch=>({
-  onThemeChange:theme=>dispatch(actions.onThemeChange(theme))
-});
-export default connect (mapStateToProps,mapDispatchToProps)(TrendingPage);
